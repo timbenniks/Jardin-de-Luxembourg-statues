@@ -1,0 +1,36 @@
+include ../mixins/flash-messages
+
+doctype html
+html
+
+	//- HTML HEADER
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+		title= title || 'statues'
+		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+		link(href="/styles/site.css", rel="stylesheet")
+
+		block css
+
+		block head
+
+	//- HTML BODY
+	body
+
+		ul
+			each link in navLinks
+				li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+		
+			if user
+				if user.canAccessKeystone
+					li: a(href='/keystone') Open Keystone
+				li: a(href='/keystone/signout') Sign Out
+			else
+				li: a(href='/keystone/signin') Sign In
+
+		block content
+			
+		block js
