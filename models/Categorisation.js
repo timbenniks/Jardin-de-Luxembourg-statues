@@ -7,7 +7,7 @@ var Categorisation = new keystone.List('Categorisation', {
 
 Categorisation.add({
 	name: { type: String, required: true },
-  description: { type: Types.Text }
+	description: { type: Types.Html, wysiwyg: true, height: 200 }
 });
 
 Categorisation.defaultColumns = 'name';
